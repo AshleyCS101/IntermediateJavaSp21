@@ -1,5 +1,5 @@
 package week1;
-import java.util.Scanner;
+
 //Welcome to Intermediate Java Programming!
 
 public class MyClass {
@@ -17,19 +17,20 @@ public class MyClass {
         // math operation precision
         // when java calculates math, it stores the intermediate type 
         // as the most precise of the pair of values
-        double result = (5.0/2) + 3.5; //6.0
+        double result1 = (5/2) + 3.5; //6.5
+        double result2 = (5.0/2) + 3.5; //6.0
         
         //boolean
-        boolean b; //false
+        boolean b; //initializes to false
         
         //math operators
         // + - * / %
         // mod operator (%) work on int types
-        int q = 45 % 4;  // remainder of 45/4
+        int q = 45 % 4;  // remainder of 45/4 = 1
         
         // mod is useful for figuring out even numbers, and getting last digit
-        int y = 24 % 2; // if x % 2 == 0, then x is even, else odd
-        int lastDigit = 80299843 % 10; // =3
+        int y = 24 % 2; // if y % 2 == 0, then y is even, else if y % 2 == 1, y is odd
+        int lastDigit = 80299843 % 10; // =3; anything % 10 gives the last digit
         
         // ++ --
         // *=
@@ -53,9 +54,7 @@ public class MyClass {
             System.out.println("r is even!");
         } else{
             System.out.println("r is odd!");
-        }
-        
-        
+        }     
     }
     
     public static void warmUp() {
@@ -69,6 +68,7 @@ public class MyClass {
         // What is the output of the following?
         
         boolean b = true || ((false && !(true && false)) || (!true || !false));
+        // all the stuff after "true ||" doesn't matter-- b is already guaranteed true
         System.out.println("The output of b is: " + b);
     }
 
@@ -88,7 +88,7 @@ public class MyClass {
 // it won't bother calculating the other half
 
 /*
-Math Operator Precedence: follows basic order of operations
+Math Operator Precedence: follows basic order of operations. Operators on same level go left-to-right
     1) Parentheses (first)
     2) ++, --
     3) *, /, %
