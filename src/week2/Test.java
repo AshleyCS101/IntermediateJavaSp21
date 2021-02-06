@@ -1,6 +1,6 @@
-package week1;
+package week2;
 
-public class myClass {
+public class Test {
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
