@@ -1,5 +1,7 @@
 package week2;
 
+import java.util.Scanner;
+
 public class Zodiac {
     // "class constant" to avoid magic numbers (labels with a relevant variable name, so we know what "4" represents)
     // also makes it easier to change the value if needed
@@ -8,10 +10,17 @@ public class Zodiac {
     // "class constant" for animals in the zodiac
     private static final int NUMBER_OF_ANIMALS = 12;
     
-    public static void main(String[] args) {
-        int year = 2002;
+    public static void main(String[] args) {        
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.println("--- ZODIAC TELLER ---");
+        System.out.println("Enter your birth year: ");
+        
+        int year = scan.nextInt(); 
         
         printZodiacAnimal(year);
+        
+        scan.close();
     }
     
     public static void printZodiacAnimal(int year) {
