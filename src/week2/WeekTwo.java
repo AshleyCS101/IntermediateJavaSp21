@@ -14,15 +14,17 @@ public class WeekTwo {
         
         // Warm Ups
         modWarmUp(7);   // What is the output of this function call?
+        
+        // Zodiac function
     }
     
     public static void modWarmUp(int n) {
         for(int i = 0; i < 40; i++) {
             int r = i % n;
             System.out.println(r);
-            
-            //System.out.println(i + " % " + n + " is " + r);
         }
     }
+    
+    //System.out.println(i + " % " + n + " is " + r);
 
 }
