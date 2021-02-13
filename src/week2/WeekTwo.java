@@ -21,7 +21,7 @@ public class WeekTwo {
         // Casting
         
         // casting
-//        int n = (int) 47.5; //47
+//        int n = (int) 47.5; // stores 47
 //        
 //        double d = n;
         
@@ -30,7 +30,7 @@ public class WeekTwo {
 //        int p = 5;
 //        while(p < 10) {
 //            System.out.println(p);
-//            //update
+//            //need an update, or else you'll get an infinite loop
 //            p += 2;
 //        }
         
@@ -58,27 +58,28 @@ public class WeekTwo {
         
         
 //        String dave = "Dave?";
-//        String davey = dave;
-//        dave = "David";
-//        System.out.println(dave);
+//        String davey = dave;      // davey stores address of dave, not dave
+//        dave = "David";   // dave now stores address of "David"
+//        System.out.println(dave);     // prints "David"
+//        System.out.println(davey);    // prints "Dave?": still stores address of "Dave?", even though dave variable changed
 
         // concatenation
 //        String str1 = 3 + "hi"; // 3 -> "3", and concatenate
-//        String str2 = (3 + 5) + "hi"; // 8 + "hi" -> "8hi"
+//        String str2 = (3 + 5) + "hi"; // 8 + "hi" -> "8hi"    // use parentheses for clarity
+        
 //        
 //        System.out.println(str2);
         
-//        String str3 = "My name is \"Ashley\"";  // the escape \" refers to "
-//        System.out.println("Hello\\world");
+//        String str3 = "My name is \"Ashley\"";  // the escape \" refers to " (quote character)
+//        System.out.println("Hello\nworld");
         
 //        String str = "hi";
-//        String s = new String("hi");
+//        String s = new String("hi");  // forces a different address
 //        
-//        System.out.println(str);
-//        System.out.println(s);
-//        System.out.println(s.equals(str));
-        
-        
+//        System.out.println(str);  // prints "hi"
+//        System.out.println(s);    // prints "hi"
+//        System.out.println(s == str);         // prints "false": compares addresses, which are different
+//        System.out.println(s.equals(str));    // prints "true": .equals() compares the data, not the addresses
         
         
 
@@ -89,8 +90,6 @@ public class WeekTwo {
         // What's the output?
         //System.out.println("They said it was \"butter\".\nIt's not butter.");
         //System.out.println("/\\______/\\\n|.\t.|\t-hey\n\\____[]__/");
-        
-        
-        
+ 
     }
 }
