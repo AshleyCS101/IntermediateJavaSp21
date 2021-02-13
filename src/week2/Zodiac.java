@@ -3,8 +3,9 @@ package week2;
 import java.util.Scanner;
 
 public class Zodiac {
-    // "class constant" to avoid magic numbers (labels with a relevant variable name, so we know what "4" represents)
-    // also makes it easier to change the value if needed
+    // "class constant" to avoid magic numbers (labels with a relevant variable name, 
+    // so we know what "4" represents)
+    // It also makes it easier to change the value if needed
     private static final int MIN_RAT_YEAR = 4; // 4 AD was the year of the rat
     
     // "class constant" for animals in the zodiac
