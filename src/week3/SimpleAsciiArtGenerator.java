@@ -11,36 +11,36 @@ import javax.imageio.ImageIO;
  * Converts image into ascii art
  * Doesn't work on transparent images
  * 
- * Sigmoid curve diagram: used to increase greyscale contrast
- * https://exposure.software/site/wp-content/uploads/2013/09/ContrastCurves1.jpg
+ * Related video: dithering (Computerphile); used by printers, newspapers, pixel art, etc. to create gradients with few shades
+ * https://www.youtube.com/watch?v=IviNO7iICTM
  * 
  * References:
  * ascii art program: https://codereview.stackexchange.com/questions/241311/ascii-art-generator
  * ascii gradient: http://paulbourke.net/dataformats/asciiart/
  * rgb to greyscale formula: https://www.mathworks.com/help/matlab/ref/rgb2gray.html
  */
-public class AsciiArtGenerator {
+public class SimpleAsciiArtGenerator {
     private static String[] PICTURES = {
             "gradient.png", "torus.png", "mushroom.png", "mario.png", "link.png", "link2.png", // 0-5
             "kirby.png", "kermit.png", "bmo.png", "mike.png", "dali.png", "hepburn.png"               // 6-11
         };
     
     // these files are loaded from my computer desktop; if you want to load in your picture you have to change the filepath
-    private static String DEMO_FILE_NAME = "C:\\Users\\Ashley Luty\\Desktop\\" + PICTURES[5];
+    private static String DEMO_FILE_NAME = "C:\\Users\\Ashley Luty\\Desktop\\" + PICTURES[2];
+    
+    // ART ADJUSTMENT FIELDS
+    private static int ART_CHAR_WIDTH = 60;    // character width of the resulting ascii art
+    private static double ART_CONTRAST = 10;    // how much to boost the contrast, 0 = no boost
     
     // ASCII ART DISPLAY FIELDS
     // the order of characters to use, from darkest to lightest
     private static String ASCII_GRADIENT = "@$B%8&WM#oahkbdpq*wmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?+~I<>i!l-_;:,\"^`'.` ";
     // used to adjust the grid used to process the image, because characters printed to console aren't square
-    private static double CHAR_HEIGHT_WIDTH_RATIO = 2.3;
-    
-    private static int ART_CHAR_WIDTH = 100;    // character width of the resulting ascii art
-    private static double ART_CONTRAST = 10;    // how much to boost the contrast, 0 = no boost
+    private static double CHAR_HEIGHT_WIDTH_RATIO = 2.3;    
     
     // MAIN ------------------------------------------------------------------------------------------------------------
     public static void main(String[] args) {
-        BufferedImage img = getImageFromFileName(DEMO_FILE_NAME);
-              
+        BufferedImage img = getImageFromFileName(DEMO_FILE_NAME);             
         printImageAsAsciiArt(img);
     }
     
@@ -94,9 +94,9 @@ public class AsciiArtGenerator {
         
         // to get grey (0-255): compute weighted average of rgb values
         // note that blue multiplier is less than red multiplier because blue is "darker" than red, etc.      
-        double grey = (0.2989 * r + 0.5870 * g + 0.1140 * b);   
-        
+        double grey = (0.2989 * r + 0.5870 * g + 0.1140 * b);           
         grey = grey/255.0;  // divide by 255 to get greyscale from 0 to 1 ("normalize")
+        
         return grey;
     }
     
@@ -108,7 +108,6 @@ public class AsciiArtGenerator {
         // if the contrast should be changed, change it
         if(ART_CONTRAST != 0) {
             // input x into sigmoid (s-curve) function, to make dark greys darker and light greys lighter
-            x = grey;
             y = 0.5 + (-0.5/(Math.atan(ART_CONTRAST*(-0.5)))) * (Math.atan(ART_CONTRAST*(x - 0.5)));
         }
         
