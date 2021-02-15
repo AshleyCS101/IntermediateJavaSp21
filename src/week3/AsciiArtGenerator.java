@@ -4,13 +4,15 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
 /*
  * Converts image into ascii art
  * Doesn't work on transparent images
+ * 
+ * Sigmoid curve diagram: used to increase greyscale contrast
+ * https://exposure.software/site/wp-content/uploads/2013/09/ContrastCurves1.jpg
  * 
  * References:
  * ascii art program: https://codereview.stackexchange.com/questions/241311/ascii-art-generator
@@ -23,45 +25,40 @@ public class AsciiArtGenerator {
             "kirby.png", "kermit.png", "bmo.png", "mike.png", "dali.png", "hepburn.png"               // 6-11
         };
     
-    // all these files are loaded from my computer desktop; if you want to load in your pictures you have to change the filepath
-    private static String DEMO_FILE_NAME = "C:\\Users\\Ashley Luty\\Desktop\\" + PICTURES[0];
+    // these files are loaded from my computer desktop; if you want to load in your picture you have to change the filepath
+    private static String DEMO_FILE_NAME = "C:\\Users\\Ashley Luty\\Desktop\\" + PICTURES[5];
     
-    // ASCII ART CHARACTER GRADIENT
-    private static String ASCII_GRADIENT = "@$B%8&WM#oahkbdpq*wmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?+~I<>i!l-_;:,\"^`'.`  ";
-    
-    // ASCII ART DISPLAY FIELDS    
-    // character width of the resulting ascii art
-    private static int ART_CHAR_WIDTH = 100;
+    // ASCII ART DISPLAY FIELDS
+    // the order of characters to use, from darkest to lightest
+    private static String ASCII_GRADIENT = "@$B%8&WM#oahkbdpq*wmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?+~I<>i!l-_;:,\"^`'.` ";
     // used to adjust the grid used to process the image, because characters printed to console aren't square
-    private static double CHAR_HEIGHT_WIDTH_RATIO = 2.25;
+    private static double CHAR_HEIGHT_WIDTH_RATIO = 2.3;
     
-    // MAIN
+    private static int ART_CHAR_WIDTH = 100;    // character width of the resulting ascii art
+    private static double ART_CONTRAST = 10;    // how much to boost the contrast, 0 = no boost
+    
+    // MAIN ------------------------------------------------------------------------------------------------------------
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);       
-        //BufferedImage img = getImageFromUser(scan);   // to get filename from console input
-        
         BufferedImage img = getImageFromFileName(DEMO_FILE_NAME);
               
         printImageAsAsciiArt(img);
-        
-        scan.close();
     }
     
-    // IMAGE PROCESSING METHODS
+    // IMAGE PROCESSING METHODS ----------------------------------------------------------------------------------------
     
     // prints the image to console, as ascii art
     private static void printImageAsAsciiArt(BufferedImage img){
-        int width = img.getWidth();
-        int height = img.getHeight();     
+        int imgPixelWidth = img.getWidth(); // original image width, in pixels
+        int imgPixelHeight = img.getHeight();     
         
         // tilePixelWidth is the pixel width of one grid square in the image, which will correspond to a single ascii character
-        double tilePixelWidth = ((double) width)/ART_CHAR_WIDTH;
+        double tilePixelWidth = ((double) imgPixelWidth)/ART_CHAR_WIDTH;
         double tilePixelHeight = tilePixelWidth * CHAR_HEIGHT_WIDTH_RATIO;
         
-        // iterate over the image, printing one row at a time
-        for(int row = 0; (row*tilePixelHeight) < height; row++) {    //row is current row number
-            for(int col = 0; (col*tilePixelWidth) < width; col++) {
-                // note that (5,5) in computer coordinates goes 5 right and 5 down
+        // iterate over the image, printing one ascii row at a time
+        for(int row = 0; (row*tilePixelHeight) < imgPixelHeight; row++) {    //row is current row number
+            for(int col = 0; (col*tilePixelWidth) < imgPixelWidth; col++) {
+                // note that (5,5) in graphics coordinates goes 5 right and 5 down
                 int currX = (int)(col*tilePixelWidth);   // the current x position (pixels) we're at in the picture
                 int currY = (int)(row*tilePixelHeight);  
                                 
@@ -75,9 +72,10 @@ public class AsciiArtGenerator {
     
     // returns the ascii character representing this rgb value
     private static char getAsciiCharFromRgb(int rgb) {
-        double grey = getGreyFromRgb(rgb);
+        double grey = getGreyFromRgb(rgb);       
+        grey = increaseGreyContrast(grey);              
         
-        // e.g. if grey = 0.5, we want the character halfway through ascii_gradient
+        // e.g. if grey = 0.5, we want to get the character halfway through ASCII_GRADIENT
         // so multiply grey by the number of characters in ASCII_GRADIENT
         int shadeIndex = (int) (grey * ASCII_GRADIENT.length());    
         
@@ -102,22 +100,22 @@ public class AsciiArtGenerator {
         return grey;
     }
     
-    
-    // IMAGE FILE METHODS
-    
-    // Asks user to input an image filename, and returns the image from the filename
-    private static BufferedImage getImageFromUser(Scanner scan) {            
-        BufferedImage image = null; // variable storing the image to get from the user
+    // takes a grey value (0 to 1) and returns a grey value with increased contrast (0 to 1)
+    private static double increaseGreyContrast(double grey) {
+        double x = grey;
+        double y = x;
         
-        while(image == null) {  // ie while no image was found
-            System.out.println("Enter image filename: ");           
-            String filename = scan.nextLine();
-            
-            image = getImageFromFileName(filename);
+        // if the contrast should be changed, change it
+        if(ART_CONTRAST != 0) {
+            // input x into sigmoid (s-curve) function, to make dark greys darker and light greys lighter
+            x = grey;
+            y = 0.5 + (-0.5/(Math.atan(ART_CONTRAST*(-0.5)))) * (Math.atan(ART_CONTRAST*(x - 0.5)));
         }
         
-        return image;
-    }
+        return y;
+    }    
+    
+    // IMAGE FILE METHODS ----------------------------------------------------------------------------------------------
     
     // Returns image from the given filename, but returns null if image was not found
     private static BufferedImage getImageFromFileName(String filename) {

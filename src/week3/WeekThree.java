@@ -9,13 +9,13 @@ public class WeekThree {
          */
         
         // What's the output?
-        int cost = 23;
+        int cost = 20;
         int tax = 2;
-        String itemCost = "Your item costs: " + cost;
-        String totalCost = "Your total costs: " + cost + tax;
+        String itemCostMessage = "Your item costs: " + cost;
+        String totalCostMessage = "Your total costs: " + cost + tax;
         
-        System.out.println(itemCost);
-        System.out.println(totalCost);
+        System.out.println(itemCostMessage);
+        System.out.println(totalCostMessage);
 
         /*
          * char
