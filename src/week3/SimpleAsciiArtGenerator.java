@@ -9,15 +9,13 @@ import javax.imageio.ImageIO;
 
 /*
  * Converts image into ascii art
- * Doesn't work on transparent images
  * 
- * Related video: dithering (Computerphile); used by printers, newspapers, pixel art, etc. to create gradients with few shades
- * https://www.youtube.com/watch?v=IviNO7iICTM
- * 
+ * Related video on dithering (Computerphile): https://www.youtube.com/watch?v=IviNO7iICTM
+ *      Used by printers, newspapers, pixel art, etc. to create gradients with few shades
  * References:
- * ascii art program: https://codereview.stackexchange.com/questions/241311/ascii-art-generator
- * ascii gradient: http://paulbourke.net/dataformats/asciiart/
- * rgb to greyscale formula: https://www.mathworks.com/help/matlab/ref/rgb2gray.html
+ *  ascii art program: https://codereview.stackexchange.com/questions/241311/ascii-art-generator
+ *  ascii gradient: http://paulbourke.net/dataformats/asciiart/
+ *  rgb to greyscale formula: https://www.mathworks.com/help/matlab/ref/rgb2gray.html
  */
 public class SimpleAsciiArtGenerator {
     private static String[] PICTURES = {
@@ -25,7 +23,7 @@ public class SimpleAsciiArtGenerator {
             "kirby.png", "kermit.png", "bmo.png", "mike.png", "dali.png", "hepburn.png"               // 6-11
         };
     
-    // these files are loaded from my computer desktop; if you want to load in your picture you have to change the filepath
+    // if you want to load in your pictures you have to change the filepath
     private static String DEMO_FILE_NAME = "C:\\Users\\Ashley Luty\\Desktop\\" + PICTURES[2];
     
     // ART ADJUSTMENT FIELDS
@@ -55,10 +53,10 @@ public class SimpleAsciiArtGenerator {
         double tilePixelWidth = ((double) imgPixelWidth)/ART_CHAR_WIDTH;
         double tilePixelHeight = tilePixelWidth * CHAR_HEIGHT_WIDTH_RATIO;
         
-        // iterate over the image, printing one ascii row at a time
+        // iterate over the image, printing one ascii art row at a time
         for(int row = 0; (row*tilePixelHeight) < imgPixelHeight; row++) {    //row is current row number
             for(int col = 0; (col*tilePixelWidth) < imgPixelWidth; col++) {
-                // note that (5,5) in graphics coordinates goes 5 right and 5 down
+                // note that (5,5) in graphics coordinates goes 5 right, and 5 down
                 int currX = (int)(col*tilePixelWidth);   // the current x position (pixels) we're at in the picture
                 int currY = (int)(row*tilePixelHeight);  
                                 
@@ -66,7 +64,8 @@ public class SimpleAsciiArtGenerator {
                 char asciiSymbol = getAsciiCharFromRgb(pixelRgb);
                 System.out.print(asciiSymbol);              
             }
-            System.out.println();   // finished printing this row, start a new line 
+            // finished printing this row, start a new line
+            System.out.println();    
         }      
     }
     
@@ -76,7 +75,7 @@ public class SimpleAsciiArtGenerator {
         grey = increaseGreyContrast(grey);              
         
         // e.g. if grey = 0.5, we want to get the character halfway through ASCII_GRADIENT
-        // so multiply grey by the number of characters in ASCII_GRADIENT
+        //  so multiply grey by the number of characters in ASCII_GRADIENT
         int shadeIndex = (int) (grey * ASCII_GRADIENT.length());    
         
         // get shadeIndex-th character from the ascii gradient
