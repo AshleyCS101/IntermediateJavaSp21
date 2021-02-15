@@ -15,13 +15,7 @@ import javax.imageio.ImageIO;
  * https://www.youtube.com/watch?v=uihBwtPIBxM&t=387s
  */
 public class AsciiArtGenerator {
-    private static String[] PICTURES = {
-            "gradient.png", "torus.png", "mushroom.png", "mario.png", "link.png", "link2.png", // 0-5
-            "kirby.png", "kermit.png", "bmo.png", "mike.png", "dali.png", "hepburn.png"               // 6-11
-        };
-    
-    // these files are loaded from my computer desktop; if you want to load in your picture you have to change the filepath
-    private static String DEMO_FILE_NAME = "C:\\Users\\Ashley Luty\\Desktop\\" + PICTURES[6];
+    private static String DEMO_FILE_NAME = "C:\\Users\\Ashley Luty\\Desktop\\schedule.png";
     
     // ART ADJUSTMENT FIELDS
     private static int ART_CHAR_WIDTH = 90;    // character width of the resulting ascii art

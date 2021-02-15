@@ -24,7 +24,7 @@ public class SimpleAsciiArtGenerator {
         };
     
     // if you want to load in your pictures you have to change the filepath
-    private static String DEMO_FILE_NAME = "C:\\Users\\Ashley Luty\\Desktop\\" + PICTURES[2];
+    private static String DEMO_FILE_NAME = "C:\\Users\\Ashley Luty\\Desktop\\pics\\" + PICTURES[2];
     
     // ART ADJUSTMENT FIELDS
     private static int ART_CHAR_WIDTH = 60;    // character width of the resulting ascii art
