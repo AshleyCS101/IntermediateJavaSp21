@@ -15,10 +15,10 @@ import javax.imageio.ImageIO;
  * https://www.youtube.com/watch?v=uihBwtPIBxM&t=387s
  */
 public class AsciiArtGenerator {
-    private static String DEMO_FILE_NAME = "C:\\Users\\Ashley Luty\\Desktop\\schedule.png";
+    private static String DEMO_FILE_NAME = "C:\\Users\\Ashley Luty\\Desktop\\pics\\torus.png";
     
     // ART ADJUSTMENT FIELDS
-    private static int ART_CHAR_WIDTH = 90;    // character width of the resulting ascii art
+    private static int ART_CHAR_WIDTH = 160;    // character width of the resulting ascii art
     private static double ART_CONTRAST = 10;    // how much to boost the contrast, 0 = no boost
     
     // EDGE ADJUSTMENT FIELDS

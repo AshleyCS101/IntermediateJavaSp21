@@ -11,7 +11,8 @@ import javax.imageio.ImageIO;
  * Converts image into ascii art
  * 
  * Related video on dithering (Computerphile): https://www.youtube.com/watch?v=IviNO7iICTM
- *      Used by printers, newspapers, pixel art, etc. to create gradients with few shades
+ *      - Used by printers, newspapers, pixel art, etc. to create gradients with few shades
+ *      - Neat color-cycled and dithered pixel art (Mark Ferrari): http://www.effectgames.com/demos/worlds/
  * References:
  *  ascii art program: https://codereview.stackexchange.com/questions/241311/ascii-art-generator
  *  ascii gradient: http://paulbourke.net/dataformats/asciiart/
