@@ -56,10 +56,4 @@ public class Week4 {
         }          
         return n + suffix;
     }
-    
-    
-    public static String getWaitingRoomMessage(String name, int queueNumber) {
-        return "You are " + getOrdinalForm(queueNumber) + " in line, " + name + ".";
-    }
-
 }
