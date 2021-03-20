@@ -9,6 +9,8 @@ public class Week6 {
 
     public static void main(String[] args) {
         
+     // REFERENCE VARIABLES ------------------------------------
+        
 //        Dog dog = new Dog("George", 0); // creates a new dog, stores at some address
 //        Dog dog2 = new Dog("George", 0);    // stored at different address
         
@@ -17,14 +19,10 @@ public class Week6 {
         // String equality: compare with .equals
         
 //        String f = new String("Hi");
-//        String g = new String("Hi");    // look to see if any existing objects match this data, assigns it to that address
+//        String g = new String("Hi");    
 //        System.out.println(f== g);
 //        System.out.println(f.equals(g));
-        
-        
-
-
-        
+        // compare Strings using .equals
         
         
 //        Vet.feedDog(dog);
@@ -33,6 +31,7 @@ public class Week6 {
 //        System.out.println(dog.getEnergyLevel());
 //        System.out.println(dog2.getEnergyLevel());
         
+//      // primitives are stored and passed by VALUE (copied)
 //        int a = 34;
 //        a +=1;
 //        System.out.println(a);
@@ -42,7 +41,6 @@ public class Week6 {
 //        
 //        Vet.feedNumber(a);
 //        
-//        // primitives are stored and passed by VALUE (copied)
 //        System.out.println(a);
         
         
@@ -51,15 +49,9 @@ public class Week6 {
 //        
 //        str = "Hello";
 //        
-//        System.out.println(str2);
+//        System.out.println(str2); // still prints "Hi"
         
-        
-        // REFERENCE VARIABLES ------------------------------------
-        
-        // Null Pointer Exception
-        
-        // OBJECT EQUALITY
-        
+
         // IMPORTING
         
         Random rand = new Random();
