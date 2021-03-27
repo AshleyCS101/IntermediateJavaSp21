@@ -65,7 +65,7 @@ public class Week7 {
 //        String[] names = {"Bob", "Martha"};
 //        
 //        for(String name : names) {
-//            //name = "SpongeBob";
+//            //name = "SpongeBob"; // alters the variable reference, not the array element reference
 //            System.out.println(name);
 //        }
         
