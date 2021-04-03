@@ -62,31 +62,26 @@ public class Week8 {
                 
         // STRING METHODS
         
-        String input = "flopsy, wopsy       , cotton tail , peter";
+//        String input = "flopsy, wopsy       , cotton tail , peter";
+//        
+//        // split method to separate by commas
+//        String[] names = input.split(",");
+//        
+//        for(int i =0; i < names.length; i++) {
+//            names[i] = names[i].trim();
+//        }
+//        
+//        System.out.println(Arrays.toString(names));
+//        
+//        // strings are immutable, don't change, there's no setChar()       
+//        // 3e2 -> "hELLO"
+//        
+//        String h = "hELLO";
+//        String lower = h.toLowerCase();
+//        
+//        System.out.println(h.toLowerCase());
+//        System.out.println(lower);
         
-        // split method to separate by commas
-        String[] names = input.split(",");
-        
-        for(int i =0; i < names.length; i++) {
-            names[i] = names[i].trim();
-        }
-        
-        System.out.println(Arrays.toString(names));
-        
-        // strings are immutable, don't change, there's no setChar()       
-        // 3e2 -> "hELLO"
-        
-        String h = "hELLO";
-        String lower = h.toLowerCase();
-        
-        System.out.println(h.toLowerCase());
-        System.out.println(lower);
-        
-        
-        // vampirify
-        // palindrome (pointers)
-        // pangram (frequency)
-        // spaces to front (building)      
     }
     
     public static void warmUp(int[] arr) {
