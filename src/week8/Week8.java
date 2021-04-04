@@ -73,7 +73,8 @@ public class Week8 {
 //        
 //        System.out.println(Arrays.toString(names));
 //        
-//        // strings are immutable, don't change, there's no setChar()       
+//        // strings are immutable, don't change, there's no setChar() 
+//        // string methods all return NEW strings, they don't change the old one
 //        // 3e2 -> "hELLO"
 //        
 //        String h = "hELLO";
