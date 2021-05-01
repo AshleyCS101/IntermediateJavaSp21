@@ -1,8 +1,8 @@
 package week11;
 
 public class Goblin {
-    private static final int MAX_DAMAGE = 5;
-    private static final int MAX_HEALTH = 20;
+    protected static final int MAX_DAMAGE = 5;
+    protected static final int MAX_HEALTH = 20;
 
     protected int health;
     
