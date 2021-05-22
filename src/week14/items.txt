@@ -1,0 +1,2 @@
+pikachu,1,hi i'm pikachu
+apple,1,it's an apple
