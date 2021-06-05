@@ -21,6 +21,9 @@ public class Week14 {
     public static void main(String[] args) {
         //  FILE IO ---------------------------------------------------------------------------------------------------
 
+        String h = "\t hello\n";
+        System.out.println(h);
+        System.out.println(h.trim());
         //System.out.println(Week14.DEFAULT[0].getName());
         
         File f = new File("src/week14/items.txt");    // describes "items.txt" in src folder > week14 folder
